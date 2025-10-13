@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-DBS=("main_db" "simples_web_john_db" "simples_web_vini_db" "simples_web_laiz_db" "simples_web_carlos_db" "simples_web_nicolas_db")
+DBS=("main_db" "simples_web_john_db" "simples_web_vini_db" "simples_web_laiz_db" "simples_web_carlos_db" "simples_web_rafael_db")
 USER="root"
 PASS="root_password"
 

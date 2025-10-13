@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-server
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  flyway-migrate-all:
+    image: flyway/flyway:latest
+    container_name: flyway-migrate-all
+    depends_on:
+      - mysql
+    volumes:
+      - ./sql:/flyway/sql
+      - ./migrate_all.sh:/flyway/migrate_all.sh
+    entrypoint: ["/bin/bash", "/flyway/migrate_all.sh"]
+
+volumes:
+  mysql_data:

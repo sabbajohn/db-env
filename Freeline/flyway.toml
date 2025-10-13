@@ -1,0 +1,44 @@
+databaseType = "MySql"
+id = "fb65a813-a8f0-4742-8546-f51cfc745260"
+name = "Freeline"
+
+[flyway]
+callbackLocations = [ "filesystem:callbacks" ]
+locations = [ "filesystem:migrations" ]
+mixed = true
+outOfOrder = true
+schemaModelLocation = "schema-model"
+validateMigrationNaming = true
+
+  [flyway.check]
+  majorTolerance = 0
+
+[flywayDesktop]
+developmentEnvironment = "development"
+shadowEnvironment = "shadow"
+
+[redgateCompare]
+filterFile = "filter.rgf"
+
+[redgateCompare.mysql.options.ignores]
+ignoreNewlinesInTextObjects = "off"
+
+[environments."Main Db"]
+url = "jdbc:mysql://ssh.lenovo.sabbasistemas.com.br:3306"
+schemas = [ "main_db" ]
+displayName = "main"
+
+[environments.development]
+url = "jdbc:mysql://ssh.lenovo.sabbasistemas.com.br:3306"
+schemas = [
+  "simples_web_john_db",
+  "simples_web_laiz_db",
+  "simples_web_carlos_db",
+  "simples_web_vini_db",
+  "simples_web_rafael_db"
+]
+displayName = "Development database"
+
+[environments.target2]
+url = "jdbc:mysql://ssh.lenovo.sabbasistemas.com.br:3306"
+schemas = [ "simples_web_john_db" ]
